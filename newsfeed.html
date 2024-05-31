@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Newsfeed</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script>
+      const token = localStorage.token;
+      const expires = localStorage.expires;
+
+      if (!token) {
+        window.location.href = "index.html";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="toast" id="toast"></div>
+    <div class="page-wrapper">
+      <header>
+        <div class="left-content">
+          <a href="newsfeed.html">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+          <form>
+            <input
+              type="search"
+              class="search"
+              placeholder="Search everything"
+              name="s"
+            />
+            <i class="fa fa-search"></i>
+          </form>
+        </div>
+        <div class="middle-content">
+          <ul class="page-nav">
+            <li class="active">
+              <a href="#">
+                <i class="fa fa-home"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-video-camera"></i>
+                <span class="badge">12</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-shopping-bag"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-users"></i>
+                <span class="badge">3</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-grav"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="right-content">
+          <a href="#">
+            <img src="https://source.unsplash.com/30x30" />
+          </a>
+          <ul class="settings">
+            <li>
+              <a href="#">
+                <i class="fa fa-plus"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-comments"></i>
+                <span class="badge">20+</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-bell"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="signOut">
+                <i class="fa fa-sign-out"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="container">
+        <aside class="left-content">
+          <div class="sticky-content">
+            <ul>
+              <li>
+                <a href="#">
+                  <div class="image">
+                    <img src="https://source.unsplash.com/40x40" />
+                  </div>
+                  <div class="text">Nume Prenume</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="image">
+                    <i class="fa fa-comments"></i>
+                  </div>
+                  <div class="text">Messages</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="image">
+                    <i class="fa fa-play"></i>
+                  </div>
+                  <div class="text">Live videos</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="image">
+                    <i class="fa fa-shopping-bag"></i>
+                  </div>
+                  <div class="text">Marketplace</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="image">
+                    <i class="fa fa-video-camera"></i>
+                  </div>
+                  <div class="text">Videos</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="image">
+                    <i class="fa fa-bookmark"></i>
+                  </div>
+                  <div class="text">Pages</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <main class="middle-content" id="posts_wrapper">
+          <div>
+            <textarea placeholder="Add new post" id="addPost"></textarea>
+            <button type="button" onclick="addNewPost()" id="submitNewPost">
+              Add new post
+            </button>
+          </div>
+        </main>
+        <aside class="right-content">
+          <div class="SPONS_MESSAGE" id="SPONS_MESSAGE"></div>
+          <div class="sticky-content">
+            <ul>
+              <li class="active">
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/40x40" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li class="active">
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/41x41" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li class="active">
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/42x42" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/43x43" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li class="active">
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/44x44" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/45x45" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/46x46" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li class="active">
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/47x47" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/48x48" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+              <li class="active">
+                <a href="#">
+                  <div class="profile-image">
+                    <img src="https://source.unsplash.com/49x49" />
+                  </div>
+                  <div class="user-name">Nume Prenume</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script src="js/consts.js"></script>
+    <script src="js/utils.js"></script>
+    <script>
+      if (currentTime > expires) {
+        localStorage.clear();
+        window.location.href = "index.html";
+      }
+    </script>
+    <script src="js/newsfeed.js"></script>
+  </body>
+</html>
